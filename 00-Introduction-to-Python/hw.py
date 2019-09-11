@@ -12,3 +12,6 @@ def is_permutation(a: str, b: str) -> bool: # первый способ
 
 print(is_permutation('baba', 'abab'))
 print(all(a.count(char) == b.count(char) for char in a)) # второй способ
+
+
+print(set(a) == set(b)) # третий способ
