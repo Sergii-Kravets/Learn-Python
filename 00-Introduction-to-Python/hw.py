@@ -5,6 +5,8 @@
 являются существенными.
 """
 
+a = 'abaabaab'
+b = 'abaabaab'
 
 def is_permutation(a: str, b: str) -> bool: # первый способ
     return sorted(a) == sorted(b)
