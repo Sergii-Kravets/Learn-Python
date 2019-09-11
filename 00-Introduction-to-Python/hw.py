@@ -5,8 +5,10 @@
 являются существенными.
 """
 
-def is_permutation(a: str, b: str) -> bool:
+
+def is_permutation(a: str, b: str) -> bool: # первый способ
     return sorted(a) == sorted(b)
 
 
 print(is_permutation('baba', 'abab'))
+print(all(a.count(char) == b.count(char) for char in a)) # второй способ
