@@ -86,3 +86,19 @@
 
 >>>>'most_common_region': ['Ribera del ''Duero','Vino de la ''Tierra de ''Castilla y ''León','Rioja']},
 
+># 'most_expensive_coutry': 291.95 #
+
+># 'cheapest_country': 10.414634146341463 #
+
+># 'most_expensive_wine': ['Roger Rose Vineyard'] #
+
+># 'cheapest_wine': ['Estate Bottled'] #
+
+># 'most_rated_country': ['US'] #
+
+># 'underrated_country': ['Bosnia and Herzegovina']} #
+ 
+
+
+
+
