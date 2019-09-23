@@ -97,6 +97,14 @@
 ># 'most_rated_country': ['US'] #
 
 ># 'underrated_country': ['Bosnia and Herzegovina']} #
+
+># 'highest_score': 
+
+>> ##['Bionic Frog','Royal City','Occhio di Pernice','Cristal Vintage Brut','Brut','Cerretalto','Rare','Barca-Velha', ##
+>> ##'La Muse','Masseto','Riserva','Le Mesnil Blanc de Blancs Brut','Nacional Vintage'], ##
+
+
+
  
 
 
