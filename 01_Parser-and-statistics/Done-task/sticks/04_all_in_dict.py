@@ -1,5 +1,5 @@
 import json
-from pprint import pprint
+
 
 with open('winedata_full.json', 'r') as json.file:
     wine_data = json.load(json.file)
