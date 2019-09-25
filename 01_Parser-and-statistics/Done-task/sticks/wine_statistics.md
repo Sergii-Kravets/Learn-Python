@@ -1,4 +1,4 @@
-## wine_statictic ##
+## wine_statistics ##
 
     {'cheapest_country': 10.414634146341463,
      'cheapest_wine': ['Estate Bottled'],
