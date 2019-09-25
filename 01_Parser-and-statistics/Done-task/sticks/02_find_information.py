@@ -131,10 +131,10 @@ def avarage_score(name):
     return total_points / counter
 
 
-#for wine in ('Gewüurztraminer', 'Gewuurztraminer', 'Riesling', 'Merlot', 'Madera', 'Tempranillo', 'Red Blend'):
-    #print('average_price of', 'wine', wine, 'is', average_price(wine))
-    #print('min_price_price of', 'wine', wine, 'is', min_price(wine))
-    #print('max_price of', 'wine', wine, 'is', max_price(wine))
-    #print('most_common_region of', 'wine', wine, 'is', most_common_region(wine))
-    #print('most_common_country of', 'wine', wine, 'is', most_common_country(wine))
-    #print('avarage_score of', 'wine', wine, 'is', avarage_score(wine))
+for wine in ('Gewüurztraminer', 'Gewuurztraminer', 'Riesling', 'Merlot', 'Madera', 'Tempranillo', 'Red Blend'):
+    print('average_price of', 'wine', wine, 'is', average_price(wine))
+    print('min_price_price of', 'wine', wine, 'is', min_price(wine))
+    print('max_price of', 'wine', wine, 'is', max_price(wine))
+    print('most_common_region of', 'wine', wine, 'is', most_common_region(wine))
+    print('most_common_country of', 'wine', wine, 'is', most_common_country(wine))
+    print('avarage_score of', 'wine', wine, 'is', avarage_score(wine))
