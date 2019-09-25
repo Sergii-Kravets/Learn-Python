@@ -332,4 +332,5 @@ stat['cheapest_country'] = cheapest_country(wine_data)
 stat['most_rated_country'] = most_rated_country(wine_data)
 stat['underrated_country'] = underrated_country(wine_data)
 
-pprint(stat)
+with open('winedata_full.json', 'w') as outfile:
+    json.dump(wines_unique, outfile)
