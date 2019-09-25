@@ -1,6 +1,6 @@
 #Найти для сортов Gew[üu]rztraminer, Riesling, Merlot, Madera, Tempranillo, Red Blend следующую информацию:
 #
-#avarege_price
+#average_price
 #min_price
 #max_price
 #most_common_region где больше всего вин этого сорта производят ?
@@ -9,14 +9,13 @@
 
 
 import json
-from pprint import pprint
 
 
 with open('winedata_full.json', 'r') as json.file:
     wine_data = json.load(json.file)
 
 
-def avarege_price(name):
+def average_price(name):
     total = 0
     counter = 0
     for wine in wine_data:
@@ -26,11 +25,12 @@ def avarege_price(name):
             counter += 1
             total += wine['price']
     if counter == 0:
-        return ('There is no such wine as', name)
+        return 'There is no such wine as', name
     return total / counter
 
+
 def min_price(name):
-    min_price = 10**100
+    min_price = 10 ** 100
     counter = 0
     for wine in wine_data:
         if wine['designation'] == name:
@@ -40,28 +40,30 @@ def min_price(name):
             if wine['price'] < min_price:
                 min_price = wine['price']
     if counter == 0:
-        return ('There is no such wine as', name)
+        return 'There is no such wine as', name
     return min_price
 
+
 def max_price(name):
-    counter = 0
+    counter_wine = 0
     max_price = 0
     for wine in wine_data:
         if wine['designation'] == name:
-            counter += 1
+            counter_wine += 1
             if wine['price'] is None:
                 continue
             if wine['price'] > max_price:
                 max_price = wine['price']
-    if counter == 0:
-        return ('There is no such wine as', name)
+    if counter_wine == 0:
+        return 'There is no such wine as', name
     return max_price
+
 
 def most_common_region(name):
     from collections import Counter
     counter_wine = 0
     counter = Counter()
-    most_common_region =[]
+    most_common_region = []
     for wine in wine_data:
         if wine['designation'] != name:
             continue
@@ -69,10 +71,10 @@ def most_common_region(name):
             continue
         else:
             counter_wine += 1
-            counter[wine['region_1']]+=1
+            counter[wine['region_1']] += 1
 
     if counter_wine == 0:
-        return ('There is no such wine as', name)
+        return 'There is no such wine as', name
 
     most_occur = counter.most_common()
 
@@ -85,11 +87,12 @@ def most_common_region(name):
 
     return most_common_region
 
+
 def most_common_country(name):
     from collections import Counter
     counter_wine = 0
     counter = Counter()
-    most_common_country =[]
+    most_common_country = []
     for wine in wine_data:
         if wine['designation'] != name:
             continue
@@ -97,10 +100,10 @@ def most_common_country(name):
             continue
         else:
             counter_wine += 1
-            counter[wine['country']]+=1
+            counter[wine['country']] += 1
 
     if counter_wine == 0:
-        return ('There is no such wine as', name)
+        return 'There is no such wine as', name
 
     most_occur = counter.most_common()
 
@@ -113,6 +116,7 @@ def most_common_country(name):
 
     return most_common_country
 
+
 def avarage_score(name):
     total_points = 0
     counter = 0
@@ -123,10 +127,14 @@ def avarage_score(name):
             counter += 1
             total_points += int(wine['points'])
     if counter == 0:
-        return ('There is no such wine as', name)
+        return 'There is no such wine as', name
     return total_points / counter
 
 
-
-for wine in ('Gew[üu]rztraminer', 'Riesling', 'Merlot', 'Madera', 'Tempranillo', 'Red Blend'):
-    print(most_common_country(wine))
+#for wine in ('Gewüurztraminer', 'Gewuurztraminer', 'Riesling', 'Merlot', 'Madera', 'Tempranillo', 'Red Blend'):
+    #print('average_price of', 'wine', wine, 'is', average_price(wine))
+    #print('min_price_price of', 'wine', wine, 'is', min_price(wine))
+    #print('max_price of', 'wine', wine, 'is', max_price(wine))
+    #print('most_common_region of', 'wine', wine, 'is', most_common_region(wine))
+    #print('most_common_country of', 'wine', wine, 'is', most_common_country(wine))
+    #print('avarage_score of', 'wine', wine, 'is', avarage_score(wine))

@@ -10,7 +10,7 @@
 # underrated_country
 
 import json
-from pprint import pprint
+
 
 with open('winedata_full.json', 'r') as json.file:
     wine_data = json.load(json.file)
@@ -189,6 +189,3 @@ def underrated_country(data):
 
     return most_underated_country
 
-
-
-print(lowest_score(wine_data))
