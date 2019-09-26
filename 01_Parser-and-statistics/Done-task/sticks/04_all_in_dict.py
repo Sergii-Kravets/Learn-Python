@@ -1,5 +1,5 @@
 import json
-from pprint import pprint
+
 
 with open('winedata_full.json', 'r') as json.file:
     wine_data = json.load(json.file)
@@ -35,16 +35,16 @@ def min_price(name):
 
 
 def max_price(name):
-    counter = 0
+    counter_wine = 0
     max_price = 0
     for wine in wine_data:
         if wine['designation'] == name:
-            counter += 1
+            counter_wine += 1
             if wine['price'] is None:
                 continue
             if wine['price'] > max_price:
                 max_price = wine['price']
-    if counter == 0:
+    if counter_wine == 0:
         return ('There is no such wine as', name)
     return max_price
 
@@ -310,7 +310,7 @@ stat = {
 
 
 wines = {}
-for wine in ('Gew[üu]rztraminer', 'Riesling', 'Merlot', 'Madera', 'Tempranillo', 'Red Blend'):
+for wine in ('Gewüurztraminer', 'Gewuurztraminer', 'Riesling', 'Merlot', 'Madera', 'Tempranillo', 'Red Blend'):
     wine_name_stat = {
         'avarege_price': avarege_price(wine),
         'min_price': min_price(wine),
@@ -332,5 +332,5 @@ stat['cheapest_country'] = cheapest_country(wine_data)
 stat['most_rated_country'] = most_rated_country(wine_data)
 stat['underrated_country'] = underrated_country(wine_data)
 
-with open('winedata_full.json', 'w') as outfile:
-    json.dump(wines_unique, outfile)
+with open('stats.json', 'w') as outfile:
+    json.dump(stat, outfile)
