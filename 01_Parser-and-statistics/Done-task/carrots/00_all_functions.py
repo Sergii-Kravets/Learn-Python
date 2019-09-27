@@ -1,11 +1,19 @@
+#To translate DNA into protein you need:
+#1) Transfer DNA to RNA - by changing the nucleotides (G for C, C for G, T for A and A for T)
+#
+#2) Then the nucleotide thymine (T) become Uracil (U).
+#
+#3) then view each triplet (codon) in the genetic code table.
+# AGU becomes Serine, which we can write as S. AUU becomes Isoleucine (Ile), which we write I
+# Also you need Need a codon table (Use Google)
+
 from collections import Counter
 
 with open('dna.fasta', 'r') as data:
     dna_data = data.read().splitlines()
 
 
-
-def number_of_nucleotides(data):
+def count_nucleotides(data):
     gen = None
     genes = {}
     for dna in data:
@@ -18,7 +26,7 @@ def number_of_nucleotides(data):
     return genes
 
 
-def dnk_into_rnk(data):
+def translate_from_dna_to_rna(data):
     rnk = []
     for counter, str in enumerate(data):
         if '>' in str:
@@ -59,27 +67,7 @@ def timin_in_uracil(data):
     return timin_rnk
 
 
-def genetic_code(data):
-    timin_rnk = []
-    for counter, str in enumerate(timin):
-        if '>' in str:
-            timin_rnk.append(str)
-            continue
-        len_str = len(str) + len(str) // 3
-        for index, symbol in enumerate(str):
-            index += 1
-            timin_rnk_symbol = symbol
-            timin_rnk.append(timin_rnk_symbol)
-            if index % 3 == 0:
-                timin_rnk.append(' ')
-
-        all_str = "".join(timin_rnk[counter:len_str + counter])
-        all_str = all_str.rstrip()
-        timin_rnk[counter:len_str + counter] = [all_str]
-    return timin_rnk
-
-
-def genetic_code_in_protein(data):
+def translate_rna_to_protein(data):
     protein = []
     codontable = {
         'GUU':'V', 'GCU':'A', 'GAU':'A', 'GGU':'G',
@@ -116,23 +104,52 @@ def genetic_code_in_protein(data):
     return protein
 
 
+def genetic_code(data):
+    timin_rnk = []
+    for counter, str in enumerate(timin):
+        if '>' in str:
+            timin_rnk.append(str)
+            continue
+        len_str = len(str) + len(str) // 3
+        for index, symbol in enumerate(str):
+            index += 1
+            timin_rnk_symbol = symbol
+            timin_rnk.append(timin_rnk_symbol)
+            if index % 3 == 0:
+                timin_rnk.append(' ')
 
-rnk = dnk_into_rnk(dna_data)
+        all_str = "".join(timin_rnk[counter:len_str + counter])
+        all_str = all_str.rstrip()
+        timin_rnk[counter:len_str + counter] = [all_str]
+    return timin_rnk
+
+count_nucleotides = count_nucleotides(dna_data)
+rnk = translate_from_dna_to_rna(dna_data)
 timin = timin_in_uracil(rnk)
 gen = genetic_code(timin)
-protein = genetic_code_in_protein(timin)
+protein = translate_rna_to_protein(timin)
 
-print(dna_data)
-print()
-print(number_of_nucleotides((dna_data)))
-print()
-print(rnk)
-print()
-print(timin)
-print()
-print(gen)
-print()
-print(protein)
+
+
+with open('01_count_nucleotides.fasta', 'w') as outfile:
+   for key in count_nucleotides:
+       count_nucleotides_string = str(key)
+       outfile.write(count_nucleotides_string + '\n')
+       count_nucleotides_string = str(count_nucleotides[key])
+       outfile.write(count_nucleotides_string + '\n')
+
+
+with open('02_translate_from_dna_to_rna.fasta', 'w') as outfile:
+    for str in rnk:
+        rnk_str = str
+        outfile.write(rnk_str + '\n')
+
+
+with open("03_translate_rna_to_protein", 'w') as outfile:
+    for str in protein:
+        protein_str = str
+        outfile.write(protein_str + '\n')
+
 
 
 
