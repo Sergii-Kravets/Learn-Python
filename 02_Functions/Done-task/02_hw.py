@@ -17,7 +17,7 @@ delete_value - удаляет значение
 
 
 class Atom:
-    __brain = 999
+
     def __init__(self, value = None):
         print('hello')
         self.__value = value
