@@ -16,50 +16,35 @@ delete_value - удаляет значение
 """
 
 
-def atom(argument=None):
-    if argument is None:
-        return None
+class Atom:
 
-    def get_value():
-        nonlocal argument
-        return argument
+    def __init__(self, value=None):
+        print('hello')
+        self.__value = value
 
-    def set_value(new_argument):
-        nonlocal argument
-        argument = new_argument
-        return argument
+    def get_value(self):
+        return self.__value
 
-    def delete_value():
-        nonlocal argument
-        argument = None
+    def set_value(self, value):
+        self.__value = value
 
-    def process_value(*func):
-        global new_argument
-        nonlocal argument
-        new_argument = argument
+    def process_value(self, *args):
+        for func in args:
+            self.__value = func(self.__value)
+        return self.__value
 
-        for i in func:
-            new_argument = i(argument)
-
-        return new_argument
-
-    return get_value, set_value, process_value, delete_value
+    def delete_value(self):
+        self.__value = None
 
 
-print(atom())
+my_atom = Atom()
 
-get_x, set_x, process_x, delete_x = atom('Hello python')
-assert get_x() == 'Hello python'
-assert process_x() == 'Hello python'
-assert process_x(lambda x: x[::-1], ) == 'nohtyp olleH'
-assert set_x(10) == 10
-delete_x()
-assert not get_x()
+# print(my_atom.set_value(666))
 
-get_x, set_x, process_x, delete_x = atom("Sergii")
-assert get_x() == "Sergii"
-assert set_x("Igor") == "Igor"
-print(process_x(lambda x: x[::-1]))
-assert process_x(lambda x: x[::-1], ) == 'rogI'
-delete_x()
-assert not get_x()
+a = [7,7,7,7,]
+
+my_atom.process_value(a)
+
+# print(my_atom.get_value())
+
+
