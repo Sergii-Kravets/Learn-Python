@@ -1,6 +1,5 @@
 import json
 
-
 titles = set()
 wines_unique = []
 
@@ -22,7 +21,7 @@ parser("winedata_2.json")
 def key_sort(x):
     f1 = x['price']
     if f1 is None:
-        f1=0
+        f1 = 0
     f2 = x['designation']
     if f2 is None:
         f2 = ""
